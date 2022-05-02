@@ -4,6 +4,7 @@ name: Context Info
 
 # Controls when the action will run.
 on:
+  # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches-ignore: main
 
@@ -33,3 +34,5 @@ jobs:
       run: echo "$RUNNER_CONTEXT"
     - name: Dump strategy context
       env:
+        STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+      run: echo "$STRATEGY_CONTEXT"
